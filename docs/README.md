@@ -1,6 +1,6 @@
 # 📍 Geo Explorer — DIO Front-End Trail CLI
 
-Projeto de linha de comando em Node.js que simula uma plataforma de trilhas de aprendizado para **Desenvolvedora Front-End**, inspirada nos cursos da [DIO - Digital Innovation One](https://web.dio.me).
+Projeto de linha de comando em Node.js que simula uma plataforma de trilhas de aprendizado para **Desenvolvedora Front-End**, inspirada nos cursos da [DIO - Digital Innovation One](https://web.dio.[...]
 
 ---
 
@@ -114,13 +114,13 @@ node commands/desafio.js intermediario
 **Exemplo de saída:**
 ```
 🚀  Desafio Geo Explorer
-────────────────────────────────────────────────
+───────────────────────────────────────────────
 📊  Nível   : intermediario
 📦  Módulo  : JavaScript Essencial
 
 🎯  Desafio :
-    "Implemente uma calculadora simples no DOM com as 4 operações básicas usando eventos JavaScript."
-────────────────────────────────────────────────
+   "Implemente uma calculadora simples no DOM com as 4 operações básicas usando eventos JavaScript."
+───────────────────────────────────────────────
 ```
 
 > Cada execução pode sortear um módulo e desafio diferente — são **27 combinações** no total.
@@ -215,7 +215,7 @@ npm run mcp
 | Nível | Trilha | Módulos | Carga Total |
 |---|---|---|---|
 | 🟢 iniciante | Fundamentos do Front-End | HTML5, CSS3, Git & GitHub | 18h |
-| 🟡 intermediario | JavaScript e Interatividade | JS Essencial, JS Assíncrono, CSS Avançado | 24h |
+| 🟡 intermediario | JavaScript e Interatividade | JS Essencial, JS Assíncrono, Hooks, APIs, CSS Avançado | 24h |
 | 🔴 avancado | React e Ecossistema Moderno | React Fundamentos, Hooks/Estado, APIs e Deploy | 30h |
 
 ---
