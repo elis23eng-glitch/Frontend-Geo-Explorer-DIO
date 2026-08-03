@@ -162,7 +162,7 @@ O desenvolvimento do Geo-Explorer foi mais do que um exercício técnico: foi um
 
 ### 💬 Mensagem final
 
-Este projeto representa o início de uma nova jornada profissional. Cada comando criado, cada teste executado e cada linha documentada reforça que **qualquer pessoa pode construir soluções reais qu[...] 
+Este projeto representa o início de uma nova jornada profissional. Cada comando criado, cada teste executado e cada linha documentada reforça que **qualquer pessoa pode construir soluções reais quando tem direção, disciplina e coragem para começar**.
 
 ---
 
