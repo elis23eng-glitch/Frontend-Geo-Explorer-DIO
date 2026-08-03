@@ -16,20 +16,24 @@ O arquivo `data/trilhas.json` contém trilhas fictícias para **Front-End**, div
 - HTML
 - CSS
 - JavaScript
+- Git
+- GitHub
 
 *Fundamentos essenciais para iniciar no Front-End.*
 
 ### 🔹 Intermediário
-- React
-- Hooks
+- React. fundamentos
+- Hooks.
 - APIs
+- CCS avançado
 
 *Construção de aplicações modernas com React, incluindo hooks e integração com APIs.*
 
 ### 🔹 Avançado
-- Performance
+- React.avançado
 - Arquitetura
 - Testes
+- Deploy
 
 *Aprofundamento em técnicas avançadas de Front-End.*
 
