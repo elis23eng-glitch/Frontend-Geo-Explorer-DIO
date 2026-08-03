@@ -4,7 +4,7 @@ Projeto Geo-Explorer desenvolvido para o desafio “Construindo seu Primeiro Pro
 
 ## 📘 O que é o Geo-Explorer
 
-O Geo-Explorer é uma aplicação em Node.js criada para o desafio **“Construindo seu Primeiro Produto com um Agente de IA”** da DIO Global. Ele permite explorar trilhas de aprendizagem, gerar [...]
+O Geo-Explorer é uma aplicação em Node.js criada para o desafio **“Construindo seu Primeiro Produto com um Agente de IA”** da DIO Global. Ele permite explorar trilhas de aprendizagem, gerar des[...] 
 
 O projeto foi desenvolvido com foco em **Front-End**, simulando trilhas de estudo para níveis Iniciante, Intermediário e Avançado.
 
@@ -21,10 +21,8 @@ O arquivo `data/trilhas.json` contém trilhas fictícias para **Front-End**, div
 
 ### 🔹 Intermediário
 - React
-- Hooks
-- APIs
 
-*Construção de aplicações modernas com React, incluindo hooks e integração com APIs.*
+*Construção de aplicações modernas com React.*
 
 ### 🔹 Avançado
 - Performance
@@ -162,7 +160,7 @@ O desenvolvimento do Geo-Explorer foi mais do que um exercício técnico: foi um
 
 ### 💬 Mensagem final
 
-Este projeto representa o início de uma nova jornada profissional. Cada comando criado, cada teste executado e cada linha documentada reforça que **qualquer pessoa pode construir soluções reá[...] 
+Este projeto representa o início de uma nova jornada profissional. Cada comando criado, cada teste executado e cada linha documentada reforça que **qualquer pessoa pode construir soluções reais qu[...]
 
 ---
 
