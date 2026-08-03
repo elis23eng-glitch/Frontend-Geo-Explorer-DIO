@@ -4,7 +4,11 @@
   "description": "Geo Explorer - Projeto de linha de comando Node.js",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test:trilha":      "node tests/trilha.test.js",
+    "test:desafio":     "node tests/desafio.test.js",
+    "test:certificado": "node tests/certificado.test.js",
+    "test": "node tests/trilha.test.js && node tests/desafio.test.js && node tests/certificado.test.js"
   },
   "author": "ELISANGELA ALVES VIEIRA",
   "license": "MIT"
