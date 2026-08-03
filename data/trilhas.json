@@ -84,6 +84,19 @@
           ]
         },
         {
+          "id": "mod-10",
+          "titulo": "Hooks e Componentização",
+          "descricao": "Introdução aos hooks do React e como usar hooks para criar componentes reutilizáveis e gerenciar estado local em aplicações modernas.",
+          "carga_horaria": "6h",
+          "topicos": [
+            "Introdução aos Hooks",
+            "useState e useEffect na prática",
+            "Hooks customizados",
+            "Componentização e composição",
+            "Boas práticas para reutilização de código"
+          ]
+        },
+        {
           "id": "mod-06",
           "titulo": "CSS Avançado e Animações",
           "descricao": "Crie interfaces sofisticadas com animações CSS, transições, pseudo-elementos e metodologia BEM.",
