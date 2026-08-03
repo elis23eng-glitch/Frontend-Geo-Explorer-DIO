@@ -39,7 +39,12 @@ function buscarTrilha(nivel) {
   console.log(`\n─────────────────────────────────────────────────\n`);
 }
 
-// Uso: node commands/trilha.js <nivel>
-// Exemplo: node commands/trilha.js iniciante
-const nivel = process.argv[2] || 'iniciante';
-buscarTrilha(nivel);
+if (require.main === module) {
+  const nivel = process.argv[2] || 'iniciante';
+  buscarTrilha(nivel);
+}
+
+module.exports = {
+  buscarTrilha,
+  carregarTrilhas
+};

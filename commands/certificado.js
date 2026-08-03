@@ -60,8 +60,13 @@ function gerarCertificado(nome, nivel) {
   `);
 }
 
-// Uso: node commands/certificado.js "<nome>" <nivel>
-// Exemplo: node commands/certificado.js "Elisangela Alves Vieira" avancado
-const nome  = process.argv[2] || 'Estudante';
-const nivel = process.argv[3] || 'iniciante';
-gerarCertificado(nome, nivel);
+if (require.main === module) {
+  const nome = process.argv[2] || 'Estudante';
+  const nivel = process.argv[3] || 'iniciante';
+  gerarCertificado(nome, nivel);
+}
+
+module.exports = {
+  gerarCertificado,
+  carregarTrilhas
+};

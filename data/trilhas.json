@@ -99,13 +99,13 @@
         {
           "id": "mod-06",
           "titulo": "CSS Avançado e Animações",
-          "descricao": "Crie interfaces sofisticadas com animações CSS, transições, pseudo-elementos e metodologia BEM.",
+          "descricao": "Crie interfaces sofisticadas com animações CSS, transições, pseudo-elementos e metodologia Bim.",
           "carga_horaria": "6h",
           "topicos": [
             "Animações com @keyframes",
             "Transições CSS",
             "Pseudo-classes e pseudo-elementos",
-            "Metodologia BEM",
+            "Metodologia Bim",
             "CSS Modules",
             "Design responsivo avançado"
           ]

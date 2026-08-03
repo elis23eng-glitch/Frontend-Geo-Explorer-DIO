@@ -85,7 +85,12 @@ function gerarDesafio(nivel) {
   console.log(`────────────────────────────────────────────────\n`);
 }
 
-// Uso: node commands/desafio.js <nivel>
-// Exemplo: node commands/desafio.js intermediario
-const nivel = process.argv[2] || 'iniciante';
-gerarDesafio(nivel);
+if (require.main === module) {
+  const nivel = process.argv[2] || 'iniciante';
+  gerarDesafio(nivel);
+}
+
+module.exports = {
+  gerarDesafio,
+  carregarTrilhas
+};

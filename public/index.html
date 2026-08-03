@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Geo Explorer</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <header class="hero">
+      <div class="hero__badge">
+        <span class="hero__badge__mark">GE</span>
+        <span>Geo Explorer</span>
+      </div>
+      <h1>Demonstração do projeto em modo usuário</h1>
+      <p>Explore trilhas, gere desafios e visualize um certificado no navegador com uma experiência clara para apresentação.</p>
+    </header>
+
+    <main class="dashboard">
+      <section class="panel">
+        <div class="panel__header">
+          <span class="panel__icon">📚</span>
+          <h2>Trilha</h2>
+        </div>
+        <label for="nivel-trilha">Nível</label>
+        <select id="nivel-trilha">
+          <option value="iniciante">Iniciante</option>
+          <option value="intermediario">Intermediário</option>
+          <option value="avancado">Avançado</option>
+        </select>
+        <button id="btn-trilha">Consultar trilha</button>
+        <div id="modulo-botoes" class="modulo-botoes"></div>
+        <div id="modulo-detalhe" class="modulo-detalhe">Selecione um módulo para visualizar sua descrição.</div>
+      </section>
+
+      <section class="panel">
+        <div class="panel__header">
+          <span class="panel__icon">🎯</span>
+          <h2>Desafio</h2>
+        </div>
+        <label for="nivel-desafio">Nível</label>
+        <select id="nivel-desafio">
+          <option value="iniciante">Iniciante</option>
+          <option value="intermediario">Intermediário</option>
+          <option value="avancado">Avançado</option>
+        </select>
+        <button id="btn-desafio">Gerar desafio</button>
+        <div id="desafio-detalhe" class="desafio-card">Selecione o nível e gere um desafio.</div>
+      </section>
+
+      <section class="panel">
+        <div class="panel__header">
+          <span class="panel__icon">🏅</span>
+          <h2>Certificado</h2>
+        </div>
+        <label for="nome-certificado">Nome</label>
+        <input id="nome-certificado" type="text" value="Estudante" />
+        <label for="nivel-certificado">Nível</label>
+        <select id="nivel-certificado">
+          <option value="iniciante">Iniciante</option>
+          <option value="intermediario">Intermediário</option>
+          <option value="avancado">Avançado</option>
+        </select>
+        <button id="btn-certificado">Gerar certificado</button>
+        <div class="certificado-preview">
+          <img id="img-certificado" alt="Certificado em visualização" />
+          <div id="badge-ficticio" class="badge-ficticio">FICTÍCIO</div>
+        </div>
+        <div id="certificado-detalhe" class="modulo-detalhe">Selecione o nome e o nível para gerar o certificado.</div>
+      </section>
+    </main>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
