@@ -1,0 +1,153 @@
+{
+  "tecnologia": "Desenvolvedora Front-End",
+  "trilhas": [
+    {
+      "id": "trilha-01",
+      "nivel": "iniciante",
+      "titulo": "Fundamentos do Front-End",
+      "descricao": "Primeiros passos no desenvolvimento web: estrutura, estilo e lógica básica.",
+      "modulos": [
+        {
+          "id": "mod-01",
+          "titulo": "HTML5 - Estruturando a Web",
+          "descricao": "Aprenda a estruturar páginas web com HTML5, utilizando tags semânticas, formulários, tabelas e boas práticas de acessibilidade.",
+          "carga_horaria": "6h",
+          "topicos": [
+            "Introdução ao HTML5",
+            "Tags semânticas (header, main, section, footer)",
+            "Formulários e inputs",
+            "Tabelas e listas",
+            "Acessibilidade e SEO básico"
+          ]
+        },
+        {
+          "id": "mod-02",
+          "titulo": "CSS3 - Estilizando a Web",
+          "descricao": "Domine o CSS3 para criar interfaces visuais atrativas, responsivas e modernas com Flexbox e Grid Layout.",
+          "carga_horaria": "8h",
+          "topicos": [
+            "Seletores e especificidade",
+            "Box model",
+            "Flexbox",
+            "Grid Layout",
+            "Responsividade e Media Queries",
+            "Variáveis CSS"
+          ]
+        },
+        {
+          "id": "mod-03",
+          "titulo": "Git e GitHub - Versionando seu Código",
+          "descricao": "Entenda o controle de versão com Git e publique seus projetos no GitHub com segurança.",
+          "carga_horaria": "4h",
+          "topicos": [
+            "Configuração do Git",
+            "Comandos essenciais (add, commit, push, pull)",
+            "Branches e merge",
+            "Pull Requests",
+            "GitHub Pages"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trilha-02",
+      "nivel": "intermediario",
+      "titulo": "JavaScript e Interatividade",
+      "descricao": "Torne suas páginas dinâmicas e interativas com JavaScript moderno e consumo de APIs.",
+      "modulos": [
+        {
+          "id": "mod-04",
+          "titulo": "JavaScript Essencial",
+          "descricao": "Fundamentos sólidos de JavaScript: variáveis, funções, DOM, eventos e lógica de programação aplicada ao front-end.",
+          "carga_horaria": "10h",
+          "topicos": [
+            "Variáveis: var, let, const",
+            "Funções e arrow functions",
+            "Manipulação do DOM",
+            "Eventos (click, input, submit)",
+            "Arrays e objetos",
+            "ES6+: destructuring, spread, template literals"
+          ]
+        },
+        {
+          "id": "mod-05",
+          "titulo": "JavaScript Assíncrono e APIs",
+          "descricao": "Aprenda a consumir APIs REST com fetch, Promises e async/await para criar aplicações conectadas a dados reais.",
+          "carga_horaria": "8h",
+          "topicos": [
+            "Callbacks e Promises",
+            "Async/Await",
+            "Fetch API",
+            "Consumo de APIs REST",
+            "Tratamento de erros",
+            "JSON e manipulação de dados"
+          ]
+        },
+        {
+          "id": "mod-06",
+          "titulo": "CSS Avançado e Animações",
+          "descricao": "Crie interfaces sofisticadas com animações CSS, transições, pseudo-elementos e metodologia BEM.",
+          "carga_horaria": "6h",
+          "topicos": [
+            "Animações com @keyframes",
+            "Transições CSS",
+            "Pseudo-classes e pseudo-elementos",
+            "Metodologia BEM",
+            "CSS Modules",
+            "Design responsivo avançado"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trilha-03",
+      "nivel": "avancado",
+      "titulo": "React e Ecossistema Moderno",
+      "descricao": "Construa aplicações front-end completas e escaláveis com React, hooks e integração com back-end.",
+      "modulos": [
+        {
+          "id": "mod-07",
+          "titulo": "React - Fundamentos",
+          "descricao": "Entenda os conceitos centrais do React: componentes, props, state, ciclo de vida e JSX para construir interfaces reativas.",
+          "carga_horaria": "12h",
+          "topicos": [
+            "Criando projetos com Create React App / Vite",
+            "Componentes funcionais",
+            "Props e state",
+            "JSX",
+            "Renderização condicional e listas",
+            "Eventos no React"
+          ]
+        },
+        {
+          "id": "mod-08",
+          "titulo": "React Hooks e Gerenciamento de Estado",
+          "descricao": "Domine os hooks do React (useState, useEffect, useContext) e gerencie estado global com Context API e Redux.",
+          "carga_horaria": "10h",
+          "topicos": [
+            "useState e useEffect",
+            "useContext e Context API",
+            "useRef e useMemo",
+            "Hooks customizados",
+            "Redux Toolkit básico",
+            "Zustand como alternativa leve"
+          ]
+        },
+        {
+          "id": "mod-09",
+          "titulo": "React com APIs e Deploy",
+          "descricao": "Integre sua aplicação React a APIs externas, gerencie rotas com React Router e publique seu projeto na nuvem.",
+          "carga_horaria": "8h",
+          "topicos": [
+            "React Router DOM",
+            "Axios para consumo de APIs",
+            "Autenticação com JWT",
+            "Variáveis de ambiente",
+            "Deploy na Vercel e Netlify",
+            "Boas práticas de performance"
+          ]
+        }
+      ]
+    }
+  ]
+}
