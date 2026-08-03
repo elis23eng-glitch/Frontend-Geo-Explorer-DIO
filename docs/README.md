@@ -73,7 +73,7 @@ node commands/trilha.js <nivel>
 node commands/trilha.js iniciante
 ```
 
-**Exemplo de saída:**
+**Exemplo de saída (iniciante):**
 ```
 🗺️  Tecnologia : Desenvolvedora Front-End
 📊  Nível      : iniciante
@@ -93,6 +93,32 @@ node commands/trilha.js iniciante
   3. Git e GitHub - Versionando seu Código (4h)
      Entenda o controle de versão com Git e publique seus projetos...
      Tópicos: Configuração do Git · Comandos essenciais · Branches e merge · ...
+```
+
+**Exemplo de saída (intermediario):**
+```
+🗺️  Tecnologia : Desenvolvedora Front-End
+📊  Nível      : intermediario
+📚  Trilha     : JavaScript e Interatividade
+📝  Descrição  : Torne suas páginas dinâmicas com JavaScript moderno, hooks e consumo de APIs.
+
+── Módulos ──────────────────────────────────────
+
+  1. JavaScript Essencial (10h)
+     Fundamentos de JavaScript: variáveis, funções, DOM e eventos.
+     Tópicos: Variáveis · Funções · DOM · Eventos · Arrays · ES6+
+
+  2. JavaScript Assíncrono e APIs (8h)
+     Consumo de APIs com fetch, Promises e async/await.
+     Tópicos: Callbacks · Promises · Async/Await · Fetch · JSON
+
+  3. Hooks e Componentização (6h)
+     Introdução aos hooks do React e criação de componentes reutilizáveis.
+     Tópicos: useState · useEffect · Hooks customizados · Componentização
+
+  4. CSS Avançado e Animações (6h)
+     Animações e metodologias avançadas de CSS.
+     Tópicos: Animations · Transitions · BEM · CSS Modules
 ```
 
 ---
