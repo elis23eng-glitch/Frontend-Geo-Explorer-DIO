@@ -55,6 +55,7 @@ node index.js
 
 Os comandos específicos são explicados na seção abaixo.
 
+
 ---
 
 ## 🛠 Comandos principais
@@ -95,6 +96,8 @@ node test/certificado.test.js
 ```
 
 Cada teste imprime no console o resultado esperado do comando correspondente.
+
+*Para testar acesse URL: http://localhost:3007
 
 ---
 
