@@ -1,0 +1,11 @@
+{
+  "name": "frontend-geo-explorer-dio",
+  "version": "1.0.0",
+  "description": "Geo Explorer - Projeto de linha de comando Node.js",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "ELISANGELA ALVES VIEIRA",
+  "license": "MIT"
+}
