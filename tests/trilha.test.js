@@ -1,7 +1,7 @@
 const { execSync } = require('child_process');
 const path = require('path');
 
-// ─── utilitários ────────────────────────────────────────────────────────────
+// ─── utilitários ─────────────────────────────────────────────────────────[...]
 
 let passou = 0;
 let falhou = 0;
@@ -43,6 +43,8 @@ try {
   const saida = rodar('node commands/trilha.js intermediario');
   assert(saida.includes('JavaScript'),                  'retorna trilha intermediária com JavaScript', 'JavaScript ausente');
   assert(saida.includes('intermediario'),               'exibe nível intermediario',                   'nível não encontrado');
+  // Novo: verificar se o módulo de Hooks foi adicionado
+  assert(saida.includes('Hooks') || saida.includes('Hooks e Componentização'), 'contém módulo Hooks', 'módulo Hooks ausente');
 } catch (e) {
   falha('trilha intermediario', e.message);
 }
@@ -62,7 +64,7 @@ try {
   falha('trilha nivel invalido', e.message);
 }
 
-// ─── resumo ──────────────────────────────────────────────────────────────────
+// ─── resumo ──────────────────────────────────────────────────────────��[...]
 
 console.log(`\n  Resultado: ${passou} passou(ram) | ${falhou} falhou(aram)\n`);
 if (falhou > 0) process.exit(1);
