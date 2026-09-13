@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Geo-Explorer: aplicação interativa para explorar trilhas Front-End, gerar desafios práticos e certificados fictícios.">
+  <meta name="description" content="Geo-Explorer V2: trilhas interativas de Front-End, Back-End, Inteligência Artificial e Mobile, com desafios, progresso, ranking e certificado demonstrativo em PDF.">
   <meta name="author" content="Elisângela Alves Vieira">
   <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#07111f">
   <link rel="canonical" href="https://geo-explorer-ibm-bob.elis23-eng.chatgpt.site/">
-  <title>Geo-Explorer | Trilhas e Desafios Front-End</title>
+  <title>Geo-Explorer V2 | Trilhas, Desafios e Progresso</title>
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%2307111f'/%3E%3Cpath d='M18 19h28v7H25v12h13v-5H31v-6h15v17H18z' fill='%234de3a2'/%3E%3C/svg%3E">
   <link rel="stylesheet" href="./styles.css">
 </head>
@@ -16,47 +16,60 @@
   <header class="topbar">
     <a class="brand" href="#app" aria-label="Geo-Explorer — início">
       <span class="brand-mark" aria-hidden="true">GE</span>
-      <span>Geo-Explorer</span>
+      <span>Geo-Explorer <small>V2</small></span>
     </a>
-    <span class="project-origin">Projeto DIO · IBM Bob</span>
+    <nav aria-label="Navegação principal">
+      <a href="#painel">Painel</a>
+      <a href="#ranking">Ranking</a>
+      <a href="#certificado">Certificado</a>
+    </nav>
     <a class="github-link" href="https://github.com/elis23eng-glitch/Frontend-Geo-Explorer-DIO" target="_blank" rel="noopener noreferrer">Ver código <span aria-hidden="true">↗</span></a>
   </header>
 
   <main id="app" class="shell">
     <section class="intro" aria-labelledby="titulo-principal">
       <div>
-        <p class="eyebrow">LABORATÓRIO DE APRENDIZAGEM FRONT-END</p>
-        <h1 id="titulo-principal">Explore uma trilha. Receba um desafio. Registre sua evolução.</h1>
-        <p class="intro-copy">Selecione seu nível para visualizar módulos, praticar com um desafio e gerar uma demonstração de certificado.</p>
+        <p class="eyebrow">PAINEL DE DESENVOLVIMENTO TECNOLÓGICO</p>
+        <h1 id="titulo-principal">Construa sua rota. Pratique. Acompanhe sua evolução.</h1>
+        <p>Explore quatro áreas de tecnologia, avance por níveis e transforme cada módulo em uma entrega prática.</p>
       </div>
-      <div class="level-control" role="group" aria-label="Nível da trilha">
-        <button class="level-button is-active" type="button" data-level="iniciante" aria-pressed="true">Iniciante</button>
-        <button class="level-button" type="button" data-level="intermediario" aria-pressed="false">Intermediário</button>
-        <button class="level-button" type="button" data-level="avancado" aria-pressed="false">Avançado</button>
+      <div class="session-note"><span aria-hidden="true">●</span> Progresso salvo neste navegador</div>
+    </section>
+
+    <section class="selector-panel" aria-label="Seleção da jornada">
+      <div>
+        <p class="control-label">Escolha a área</p>
+        <div id="area-control" class="area-control" role="group" aria-label="Área de tecnologia"></div>
+      </div>
+      <div>
+        <p class="control-label">Defina o nível</p>
+        <div id="level-control" class="level-control" role="group" aria-label="Nível da trilha"></div>
       </div>
     </section>
 
     <section class="overview" aria-label="Resumo da trilha selecionada">
       <div class="overview-copy">
-        <span class="status-dot" aria-hidden="true"></span>
+        <span id="area-icon" class="area-icon" aria-hidden="true">&lt;/&gt;</span>
         <div>
-          <p id="level-label" class="micro-label">NÍVEL INICIANTE</p>
+          <p id="track-label" class="micro-label">FRONT-END · INICIANTE</p>
           <h2 id="track-title">Fundamentos do Front-End</h2>
-          <p id="track-description">Primeiros passos no desenvolvimento web: estrutura, estilo e lógica básica.</p>
+          <p id="track-description">Primeiros passos para estruturar, estilizar e versionar experiências web.</p>
         </div>
       </div>
       <dl class="stats">
         <div><dt>Módulos</dt><dd id="stat-modules">3</dd></div>
-        <div><dt>Carga estimada</dt><dd id="stat-hours">18h</dd></div>
+        <div><dt>Carga</dt><dd id="stat-hours">18h</dd></div>
         <div><dt>Progresso</dt><dd id="stat-progress">0%</dd></div>
+        <div><dt>Pontos</dt><dd id="stat-score">0</dd></div>
+        <div><dt>Desafios</dt><dd id="stat-challenges">0</dd></div>
       </dl>
     </section>
 
-    <section class="workspace" aria-label="Área interativa do Geo-Explorer">
+    <section id="painel" class="workspace" aria-label="Área de aprendizagem">
       <article class="panel panel-track">
         <div class="panel-heading">
           <div><span class="step-number">01</span><h2>Trilha de aprendizagem</h2></div>
-          <p>Selecione um módulo para consultar escopo, carga horária e tópicos.</p>
+          <p>Abra um módulo, consulte os tópicos e registre sua conclusão.</p>
         </div>
         <div class="track-layout">
           <div id="module-list" class="module-list" role="list"></div>
@@ -64,36 +77,71 @@
         </div>
       </article>
 
-      <article class="panel">
-        <div class="panel-heading">
-          <div><span class="step-number">02</span><h2>Desafio prático</h2></div>
-          <p>Gere uma atividade coerente com o módulo e o nível selecionados.</p>
+      <article class="panel panel-challenge">
+        <div class="panel-heading compact">
+          <div><span class="step-number">02</span><h2>Desafio aplicado</h2></div>
+          <p>Proposta técnica com entregáveis e critérios de aceite.</p>
         </div>
         <div id="challenge-card" class="challenge-card" aria-live="polite">
-          <p class="micro-label">PRONTO PARA PRATICAR</p>
-          <h3>Seu próximo desafio aparecerá aqui.</h3>
-          <p>Use a proposta como ponto de partida e registre sua solução no GitHub.</p>
+          <p class="micro-label">MISSÃO DISPONÍVEL</p>
+          <h3>Gere um desafio para o módulo selecionado.</h3>
+          <p>A complexidade e a pontuação acompanham o nível da trilha.</p>
         </div>
-        <button id="generate-challenge" class="primary-button" type="button">Gerar novo desafio</button>
+        <button id="generate-challenge" class="primary-button" type="button">Gerar desafio</button>
       </article>
 
-      <article class="panel">
-        <div class="panel-heading">
-          <div><span class="step-number">03</span><h2>Certificado demonstrativo</h2></div>
-          <p>Gere uma prévia fictícia para simular a conclusão da trilha.</p>
+      <article class="panel panel-dashboard">
+        <div class="panel-heading compact">
+          <div><span class="step-number">03</span><h2>Painel de evolução</h2></div>
+          <button id="reset-progress" class="text-button" type="button">Reiniciar dados</button>
         </div>
-        <label for="student-name">Nome do participante</label>
-        <input id="student-name" type="text" value="Estudante" maxlength="60" autocomplete="name">
-        <button id="generate-certificate" class="primary-button" type="button">Gerar certificado fictício</button>
-        <div id="certificate-result" class="certificate-result" aria-live="polite">
-          <p>Nenhum certificado gerado.</p>
+        <div class="progress-layout">
+          <div id="progress-ring" class="progress-ring" style="--progress: 0">
+            <span id="overall-progress">0%</span>
+            <small>progresso geral</small>
+          </div>
+          <div id="area-progress" class="area-progress"></div>
+        </div>
+        <div>
+          <p class="control-label">Conquistas</p>
+          <div id="achievement-list" class="achievement-list"></div>
+        </div>
+      </article>
+
+      <article id="ranking" class="panel panel-ranking">
+        <div class="panel-heading compact">
+          <div><span class="step-number">04</span><h2>Ranking de desafios</h2></div>
+          <span class="demo-badge">Demonstrativo</span>
+        </div>
+        <label for="participant-name">Nome no painel</label>
+        <input id="participant-name" type="text" value="Estudante" maxlength="45" autocomplete="name">
+        <ol id="ranking-list" class="ranking-list"></ol>
+        <p class="privacy-note">A pontuação pessoal fica armazenada somente neste dispositivo. Os demais participantes são fictícios.</p>
+      </article>
+
+      <article id="certificado" class="panel panel-certificate">
+        <div class="panel-heading compact">
+          <div><span class="step-number">05</span><h2>Certificado demonstrativo</h2></div>
+          <span class="pdf-badge">PDF</span>
+        </div>
+        <div class="certificate-layout">
+          <div>
+            <p>Gere um documento fictício com a área, o nível, a carga horária, o progresso e a pontuação alcançada.</p>
+            <button id="generate-certificate" class="primary-button" type="button">Gerar certificado em PDF</button>
+          </div>
+          <div id="certificate-result" class="certificate-result" aria-live="polite">
+            <span aria-hidden="true">PDF</span>
+            <p>Nenhum certificado gerado.</p>
+          </div>
         </div>
       </article>
     </section>
   </main>
 
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
   <footer>
-    <p>Projeto educacional desenvolvido por <strong>Elisângela Alves Vieira</strong> · Dados e certificados são demonstrativos.</p>
+    <p>Projeto educacional desenvolvido por <strong>Elisângela Alves Vieira</strong> · Trilhas, ranking e certificados são demonstrativos.</p>
   </footer>
 
   <script src="./app.js"></script>
