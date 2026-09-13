@@ -1,13 +1,14 @@
 {
   "name": "frontend-geo-explorer-dio",
-  "version": "1.0.0",
-  "description": "Geo Explorer - Projeto de linha de comando Node.js",
+  "version": "1.1.0",
+  "description": "Geo-Explorer: aplicação web e CLI para trilhas e desafios Front-End",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "mcp":              "node mcp-server.js",
-    "test:trilha":      "node tests/trilha.test.js",
-    "test:desafio":     "node tests/desafio.test.js",
+    "start": "node server.js",
+    "cli": "node index.js",
+    "mcp": "node mcp-server.js",
+    "test:trilha": "node tests/trilha.test.js",
+    "test:desafio": "node tests/desafio.test.js",
     "test:certificado": "node tests/certificado.test.js",
     "test": "node tests/trilha.test.js && node tests/desafio.test.js && node tests/certificado.test.js"
   },
