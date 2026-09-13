@@ -1,184 +1,351 @@
-const tracks = {
-  iniciante: {
-    label: 'Iniciante',
-    title: 'Fundamentos do Front-End',
-    description: 'Primeiros passos no desenvolvimento web: estrutura, estilo e lógica básica.',
-    modules: [
-      { title: 'HTML5 — Estruturando a Web', hours: 6, description: 'Estruture páginas com HTML5, tags semânticas, formulários, tabelas e boas práticas de acessibilidade.', topics: ['HTML semântico', 'Formulários', 'Tabelas e listas', 'Acessibilidade', 'SEO básico'], challenges: ['Crie uma página de portfólio usando header, main, section e footer.', 'Monte um formulário de contato acessível com validação dos campos.', 'Construa uma tabela com cinco produtos fictícios, preços e categorias.'] },
-      { title: 'CSS3 — Estilizando a Web', hours: 8, description: 'Crie interfaces modernas e responsivas utilizando Flexbox, Grid e variáveis CSS.', topics: ['Box model', 'Flexbox', 'CSS Grid', 'Media queries', 'Variáveis CSS'], challenges: ['Crie uma galeria responsiva que alterne entre uma, duas e três colunas.', 'Monte um card de produto com Flexbox e estados de interação.', 'Desenvolva um menu responsivo com transições e foco visível.'] },
-      { title: 'Git e GitHub — Versionando Código', hours: 4, description: 'Organize versões, branches e entregas para publicar projetos com segurança.', topics: ['Commit', 'Branches', 'Merge', 'Pull Request', 'GitHub Pages'], challenges: ['Crie branches main e develop e simule um fluxo de merge.', 'Documente um projeto fictício em um README claro e reproduzível.', 'Implemente uma feature em branch própria e descreva um Pull Request.'] }
-    ]
+function moduleData(title, hours, description, topics, challenge, brief) {
+  return { title, hours, description, topics, challenge, brief };
+}
+
+const catalog = {
+  frontend: {
+    label: 'Front-End', icon: '</>', description: 'Interfaces acessíveis, responsivas e orientadas à experiência do usuário.',
+    levels: {
+      iniciante: { title: 'Fundamentos do Front-End', description: 'Estrutura, estilo e versionamento para construir as primeiras experiências web.', modules: [
+        moduleData('HTML Semântico e Acessibilidade', 6, 'Estruture páginas claras, acessíveis e preparadas para mecanismos de busca.', ['Semântica', 'Formulários', 'ARIA', 'SEO básico'], 'Portal de serviços acessível', 'Construa uma página de serviços com navegação por teclado, formulário validado e hierarquia semântica.'),
+        moduleData('CSS Responsivo', 8, 'Crie layouts fluidos com Grid, Flexbox e boas práticas de responsividade.', ['Box model', 'Flexbox', 'Grid', 'Media queries'], 'Galeria responsiva multitelas', 'Implemente uma galeria que se adapte a celular, tablet e desktop sem rolagem horizontal.'),
+        moduleData('Git e GitHub', 4, 'Versione entregas, organize branches e documente decisões técnicas.', ['Commit', 'Branches', 'Merge', 'README'], 'Fluxo de entrega versionado', 'Crie uma feature em branch própria, registre commits claros e documente um Pull Request simulado.')
+      ]},
+      intermediario: { title: 'JavaScript e Interatividade', description: 'Comportamentos dinâmicos, consumo de dados e componentes reutilizáveis.', modules: [
+        moduleData('JavaScript e DOM', 10, 'Manipule eventos, estados e elementos da interface com JavaScript moderno.', ['DOM', 'Eventos', 'Arrays', 'ES6+'], 'Painel de tarefas interativo', 'Crie um painel com inclusão, edição, filtros, contadores e persistência local.'),
+        moduleData('APIs e Assincronismo', 8, 'Consuma serviços REST com fetch, async/await e tratamento de falhas.', ['Fetch', 'Promises', 'REST', 'JSON'], 'Buscador resiliente de dados', 'Integre uma API pública com loading, estado vazio, cache local e mensagens de erro úteis.'),
+        moduleData('Componentização e Estado', 8, 'Divida a experiência em componentes e organize o fluxo de dados.', ['Componentes', 'Estado', 'Eventos', 'Reutilização'], 'Catálogo modular', 'Modele um catálogo com componentes reutilizáveis, filtros combinados e estado previsível.')
+      ]},
+      avancado: { title: 'Arquitetura Front-End', description: 'Aplicações escaláveis com qualidade, desempenho, testes e entrega contínua.', modules: [
+        moduleData('React e Arquitetura', 12, 'Estruture domínios, rotas e componentes com separação de responsabilidades.', ['React', 'Rotas', 'Hooks', 'Arquitetura'], 'Portal React escalável', 'Projete um portal com três domínios, rotas protegidas e camada de serviços desacoplada.'),
+        moduleData('Estado e Performance', 10, 'Otimize renderizações e organize estados locais, globais e remotos.', ['Context', 'Memoização', 'Cache', 'Performance'], 'Dashboard de alta performance', 'Implemente um dashboard filtrável, mensure gargalos e documente as otimizações realizadas.'),
+        moduleData('Testes e Deploy', 10, 'Garanta confiabilidade com testes, automação e publicação controlada.', ['Testes', 'CI/CD', 'Observabilidade', 'Deploy'], 'Pipeline de qualidade', 'Crie testes unitários e de integração, automatize validações e publique uma versão rastreável.')
+      ]}
+    }
   },
-  intermediario: {
-    label: 'Intermediário',
-    title: 'JavaScript e Interatividade',
-    description: 'Aplicações dinâmicas com JavaScript moderno, eventos, dados e consumo de APIs.',
-    modules: [
-      { title: 'JavaScript Essencial', hours: 10, description: 'Aplique funções, eventos, arrays, objetos e manipulação do DOM em soluções interativas.', topics: ['Funções', 'DOM', 'Eventos', 'Arrays e objetos', 'ES6+'], challenges: ['Crie um carrinho que permita adicionar, remover e calcular o total.', 'Implemente uma calculadora no DOM com as quatro operações.', 'Filtre uma lista de produtos e apresente apenas itens abaixo de R$ 100.'] },
-      { title: 'JavaScript Assíncrono e APIs', hours: 8, description: 'Consuma APIs REST com fetch, Promises e async/await, incluindo tratamento de erros.', topics: ['Promises', 'Async/await', 'Fetch API', 'REST', 'JSON'], challenges: ['Consuma a API ViaCEP e apresente o endereço a partir de um CEP.', 'Liste os cinco repositórios mais recentes de um usuário do GitHub.', 'Crie um estado de carregamento e trate falhas de uma requisição.'] },
-      { title: 'Hooks e Componentização', hours: 6, description: 'Crie componentes reutilizáveis e gerencie estados locais com hooks.', topics: ['Componentes', 'useState', 'useEffect', 'Hooks customizados', 'Composição'], challenges: ['Construa um contador com incrementar, decrementar e redefinir.', 'Crie um componente de busca com estado e mensagens de feedback.', 'Extraia uma lógica repetida para um hook customizado.'] },
-      { title: 'CSS Avançado e Animações', hours: 6, description: 'Aplique transições, animações, pseudo-elementos e organização escalável de estilos.', topics: ['Keyframes', 'Transições', 'Pseudo-elementos', 'BEM', 'CSS Modules'], challenges: ['Crie um botão com animação de carregamento usando keyframes.', 'Implemente um card com efeito de profundidade e movimento reduzido.', 'Monte um skeleton screen para uma lista de conteúdos.'] }
-    ]
+  backend: {
+    label: 'Back-End', icon: '{ }', description: 'Serviços, APIs, bancos de dados e arquiteturas confiáveis.',
+    levels: {
+      iniciante: { title: 'Fundamentos de Back-End', description: 'Lógica de servidor, HTTP e persistência para os primeiros serviços.', modules: [
+        moduleData('Node.js e Módulos', 7, 'Execute JavaScript no servidor e organize responsabilidades em módulos.', ['Node.js', 'Módulos', 'NPM', 'Erros'], 'CLI de gestão de atividades', 'Crie uma ferramenta de terminal para cadastrar, listar, concluir e salvar atividades em JSON.'),
+        moduleData('HTTP e APIs REST', 7, 'Entenda requisições, respostas, rotas e códigos de status.', ['HTTP', 'Rotas', 'REST', 'Status'], 'API de chamados', 'Implemente uma API de chamados com operações CRUD e respostas HTTP consistentes.'),
+        moduleData('Dados com SQL', 8, 'Modele tabelas, relacionamentos e consultas essenciais.', ['SQL', 'Modelagem', 'CRUD', 'Chaves'], 'Banco de dados de projetos', 'Modele projetos, responsáveis, marcos e riscos com chaves e consultas de acompanhamento.')
+      ]},
+      intermediario: { title: 'APIs e Segurança', description: 'Serviços robustos com autenticação, validação e testes automatizados.', modules: [
+        moduleData('APIs Modulares', 10, 'Separe controladores, serviços e acesso a dados.', ['Camadas', 'Validação', 'Middlewares', 'Logs'], 'API modular de indicadores', 'Crie uma API que registre KPIs, valide metas e calcule desvios por período.'),
+        moduleData('Autenticação e Autorização', 9, 'Proteja recursos com identidade, permissões e práticas seguras.', ['JWT', 'Papéis', 'Hash', 'Segurança'], 'Controle de acesso por perfil', 'Implemente login e permissões distintas para analista, gestor e administrador.'),
+        moduleData('Testes de API', 8, 'Automatize cenários críticos e valide contratos de integração.', ['Unitários', 'Integração', 'Mocks', 'Contratos'], 'Suíte de regressão', 'Crie testes para sucesso, validação, autorização e falhas de uma API de projetos.')
+      ]},
+      avancado: { title: 'Arquitetura e Operação', description: 'Escalabilidade, desempenho, observabilidade e entrega segura.', modules: [
+        moduleData('Arquitetura de Serviços', 12, 'Modele limites de domínio, eventos e dependências entre serviços.', ['Domínios', 'Eventos', 'Filas', 'Resiliência'], 'Ecossistema orientado a eventos', 'Projete três serviços integrados por eventos, com idempotência e tratamento de indisponibilidade.'),
+        moduleData('Cache e Performance', 10, 'Reduza latência e custo com estratégias de cache e paginação.', ['Cache', 'Índices', 'Paginação', 'Profiling'], 'Otimização orientada a métricas', 'Meça uma consulta crítica, aplique duas otimizações e compare os resultados obtidos.'),
+        moduleData('Observabilidade e CI/CD', 10, 'Monitore serviços e automatize entregas com segurança.', ['Logs', 'Métricas', 'Tracing', 'Pipeline'], 'Operação confiável', 'Defina SLI/SLO, alertas e um pipeline com validação, rollback e evidências de implantação.')
+      ]}
+    }
   },
-  avancado: {
-    label: 'Avançado',
-    title: 'React e Ecossistema Moderno',
-    description: 'Aplicações completas e escaláveis com componentes, estado, rotas e integração com serviços.',
-    modules: [
-      { title: 'React — Fundamentos', hours: 12, description: 'Construa interfaces reativas com componentes funcionais, props, state e JSX.', topics: ['Componentes', 'Props', 'State', 'JSX', 'Renderização condicional'], challenges: ['Crie uma lista de produtos recebida por props com preço formatado.', 'Implemente um formulário controlado com validação básica.', 'Construa uma tela com estados de vazio, carregamento e sucesso.'] },
-      { title: 'React Hooks e Estado', hours: 10, description: 'Gerencie estado local e global com hooks, Context API e padrões de reutilização.', topics: ['useState', 'useEffect', 'useContext', 'useMemo', 'Context API'], challenges: ['Crie um hook useFetch com data, loading e error.', 'Implemente um carrinho global utilizando Context API.', 'Otimize uma lista filtrável com memoização responsável.'] },
-      { title: 'React com APIs e Deploy', hours: 8, description: 'Integre rotas e APIs, organize variáveis de ambiente e prepare a aplicação para publicação.', topics: ['React Router', 'APIs', 'Autenticação', 'Variáveis de ambiente', 'Deploy'], challenges: ['Crie três rotas com navegação e página de erro.', 'Implemente uma camada de serviço para consumo de uma API.', 'Prepare configurações de ambiente e publique uma aplicação de teste.'] }
-    ]
+  ia: {
+    label: 'Inteligência Artificial', icon: 'AI', description: 'Dados, modelos e agentes de IA aplicados com qualidade e responsabilidade.',
+    levels: {
+      iniciante: { title: 'Fundamentos de IA Aplicada', description: 'Conceitos essenciais, prompts claros e uso responsável de modelos.', modules: [
+        moduleData('Fundamentos de IA', 6, 'Diferencie automação, machine learning, IA generativa e agentes.', ['Conceitos', 'Casos de uso', 'Limitações', 'Ética'], 'Mapa de oportunidades de IA', 'Analise um processo real, identifique três oportunidades e registre riscos e critérios de sucesso.'),
+        moduleData('Engenharia de Prompt', 7, 'Estruture contexto, tarefa, restrições e formato de saída.', ['Contexto', 'Few-shot', 'Restrições', 'Avaliação'], 'Biblioteca de prompts testada', 'Crie e compare cinco prompts para extração, classificação e resumo de informações.'),
+        moduleData('IA Responsável', 5, 'Avalie privacidade, vieses, transparência e supervisão humana.', ['Privacidade', 'Viés', 'Transparência', 'Humano no ciclo'], 'Checklist de uso responsável', 'Elabore uma avaliação de risco para um assistente de IA usado em decisões de negócio.')
+      ]},
+      intermediario: { title: 'Dados, RAG e Agentes', description: 'Soluções conectadas a conhecimento, ferramentas e fluxos de trabalho.', modules: [
+        moduleData('Preparação de Dados', 9, 'Organize, limpe e documente dados para aplicações de IA.', ['Qualidade', 'Metadados', 'Chunking', 'Governança'], 'Base de conhecimento auditável', 'Prepare documentos fictícios, defina metadados e registre regras de qualidade e atualização.'),
+        moduleData('RAG e Recuperação', 10, 'Conecte modelos a fontes verificáveis e avalie relevância das respostas.', ['Embeddings', 'Busca', 'Contexto', 'Citações'], 'Assistente com fontes', 'Projete um fluxo RAG que responda perguntas e apresente a origem de cada informação utilizada.'),
+        moduleData('Agentes e Ferramentas', 10, 'Orquestre decisões, ferramentas e critérios de parada.', ['Agentes', 'Tools', 'MCP', 'Guardrails'], 'Agente de acompanhamento', 'Crie um agente que consulte indicadores, detecte desvios e proponha um plano de ação para validação humana.')
+      ]},
+      avancado: { title: 'Engenharia de Agentes', description: 'Arquiteturas multiagente, avaliação contínua e governança empresarial.', modules: [
+        moduleData('Arquitetura Multiagente', 12, 'Distribua papéis e coordene colaboração entre agentes especializados.', ['Orquestração', 'Memória', 'Delegação', 'Conflitos'], 'PMO multiagente', 'Modele agentes de riscos, prazos e indicadores coordenados por um orquestrador com regras de escalonamento.'),
+        moduleData('Avaliação e Observabilidade', 10, 'Meça qualidade, custo, latência e segurança das respostas.', ['Evals', 'Tracing', 'Custo', 'Red teaming'], 'Painel de qualidade de IA', 'Defina um conjunto de avaliações, métricas e alertas para acompanhar uma aplicação generativa.'),
+        moduleData('MLOps e Governança', 12, 'Controle versões, dados, aprovações e implantação de modelos.', ['MLOps', 'Versionamento', 'Riscos', 'Compliance'], 'Ciclo de vida governado', 'Desenhe um fluxo de aprovação, monitoramento e reversão para uma solução de IA empresarial.')
+      ]}
+    }
+  },
+  mobile: {
+    label: 'Mobile', icon: '▯', description: 'Aplicações móveis centradas no usuário, conectadas e preparadas para publicação.',
+    levels: {
+      iniciante: { title: 'Fundamentos Mobile', description: 'Interfaces, navegação e dados locais para aplicativos simples.', modules: [
+        moduleData('Interface e Componentes', 7, 'Construa telas reutilizáveis com hierarquia e acessibilidade.', ['Componentes', 'Layout', 'Acessibilidade', 'Tema'], 'Aplicativo de hábitos', 'Crie três telas para registrar hábitos, acompanhar o dia e visualizar uma sequência semanal.'),
+        moduleData('Navegação e Estado', 7, 'Organize fluxos entre telas e preserve dados da sessão.', ['Rotas', 'Parâmetros', 'Estado', 'Formulários'], 'Fluxo de cadastro guiado', 'Implemente cadastro em etapas com validação, retorno e resumo antes da confirmação.'),
+        moduleData('Persistência Local', 6, 'Armazene preferências e registros com segurança no dispositivo.', ['Storage', 'JSON', 'Preferências', 'Offline'], 'Lista offline', 'Crie uma lista que funcione sem conexão e restaure os dados ao reabrir o aplicativo.')
+      ]},
+      intermediario: { title: 'Aplicativos Conectados', description: 'APIs, autenticação, sincronização e recursos do dispositivo.', modules: [
+        moduleData('APIs e Autenticação', 9, 'Consuma serviços e proteja sessões do usuário.', ['HTTP', 'Token', 'Sessão', 'Erros'], 'Área autenticada', 'Crie login, renovação de sessão e uma tela de dados com tratamento de expiração.'),
+        moduleData('Offline First e Sincronização', 10, 'Mantenha o app útil sem internet e trate conflitos de dados.', ['Cache', 'Fila', 'Sincronização', 'Conflitos'], 'Inspeção de campo offline', 'Registre itens, fotos simuladas e observações offline, sincronizando quando a conexão retornar.'),
+        moduleData('Recursos e Testes Mobile', 8, 'Integre capacidades do dispositivo e valide fluxos críticos.', ['Câmera', 'Localização', 'Permissões', 'Testes'], 'Registro georreferenciado', 'Implemente captura simulada de localização com permissões, fallback e testes do fluxo principal.')
+      ]},
+      avancado: { title: 'Arquitetura Mobile', description: 'Qualidade, desempenho, segurança e ciclo completo de publicação.', modules: [
+        moduleData('Arquitetura e Performance', 11, 'Separe domínios e otimize inicialização, listas e memória.', ['Arquitetura', 'Profiling', 'Memória', 'Renderização'], 'Aplicativo modular de operações', 'Projete módulos independentes, meça o tempo inicial e otimize uma lista de grande volume.'),
+        moduleData('Segurança e Publicação', 10, 'Proteja dados e prepare versões rastreáveis para as lojas.', ['Secrets', 'Criptografia', 'Build', 'Release'], 'Pipeline de publicação segura', 'Defina assinatura, ambientes, validações, versionamento e checklist de lançamento.'),
+        moduleData('Observabilidade e Experimentação', 9, 'Acompanhe estabilidade e valide melhorias com dados.', ['Crashes', 'Analytics', 'Feature flags', 'Experimentos'], 'Evolução orientada a métricas', 'Defina eventos, indicadores e um experimento controlado para melhorar a conclusão de uma jornada.')
+      ]}
+    }
   }
 };
 
-const state = { level: 'iniciante', selectedModule: 0, completed: new Set() };
-const elements = {
-  levelButtons: [...document.querySelectorAll('.level-button')],
-  levelLabel: document.getElementById('level-label'),
-  trackTitle: document.getElementById('track-title'),
-  trackDescription: document.getElementById('track-description'),
-  statModules: document.getElementById('stat-modules'),
-  statHours: document.getElementById('stat-hours'),
-  statProgress: document.getElementById('stat-progress'),
-  moduleList: document.getElementById('module-list'),
-  moduleDetail: document.getElementById('module-detail'),
-  challengeCard: document.getElementById('challenge-card'),
-  challengeButton: document.getElementById('generate-challenge'),
-  nameInput: document.getElementById('student-name'),
-  certificateButton: document.getElementById('generate-certificate'),
-  certificateResult: document.getElementById('certificate-result')
+const levels = {
+  iniciante: { label: 'Iniciante', points: 100, deliverables: ['Código funcional e organizado', 'README com instruções de execução', 'Evidências de três testes manuais'], criteria: ['Fluxo principal concluído', 'Interface ou saída compreensível', 'Sem erro bloqueante'] },
+  intermediario: { label: 'Intermediário', points: 200, deliverables: ['Arquitetura modular', 'Tratamento de erros e estados alternativos', 'Testes automatizados do fluxo crítico', 'Documentação técnica'], criteria: ['Regras de negócio validadas', 'Falhas tratadas com clareza', 'Código reutilizável e versionado'] },
+  avancado: { label: 'Avançado', points: 300, deliverables: ['Arquitetura escalável documentada', 'Testes unitários e de integração', 'Métricas de qualidade ou desempenho', 'Pipeline ou plano de implantação'], criteria: ['Decisões técnicas justificadas', 'Riscos e dependências registrados', 'Entrega observável, segura e reproduzível'] }
 };
 
-function activeTrack() { return tracks[state.level]; }
-function moduleKey(index) { return `${state.level}:${index}`; }
-function escapeXml(value) { return String(value).replace(/[<>&'\"]/g, char => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', "'": '&apos;', '"': '&quot;' }[char])); }
+const areaOrder = ['frontend', 'backend', 'ia', 'mobile'];
+const levelOrder = ['iniciante', 'intermediario', 'avancado'];
+const storageKey = 'geoExplorerV2';
+let downloadUrl = null;
+let toastTimer = null;
 
-function updateStats() {
-  const track = activeTrack();
-  const completed = track.modules.filter((_, index) => state.completed.has(moduleKey(index))).length;
-  elements.statModules.textContent = track.modules.length;
-  elements.statHours.textContent = `${track.modules.reduce((sum, item) => sum + item.hours, 0)}h`;
-  elements.statProgress.textContent = `${Math.round((completed / track.modules.length) * 100)}%`;
+function loadState() {
+  const initial = { area: 'frontend', level: 'iniciante', selectedModule: 0, completedModules: [], completedChallenges: [], name: 'Estudante' };
+  try {
+    const saved = JSON.parse(localStorage.getItem(storageKey));
+    return { ...initial, ...saved, completedModules: saved?.completedModules || [], completedChallenges: saved?.completedChallenges || [] };
+  } catch { return initial; }
 }
 
-function renderModuleDetail() {
-  const module = activeTrack().modules[state.selectedModule];
-  elements.moduleDetail.replaceChildren();
-  const label = document.createElement('p');
-  label.className = 'micro-label';
-  label.textContent = `${module.hours} HORAS · MÓDULO ${String(state.selectedModule + 1).padStart(2, '0')}`;
-  const title = document.createElement('h3');
-  title.textContent = module.title;
-  const description = document.createElement('p');
-  description.textContent = module.description;
-  const topics = document.createElement('div');
-  topics.className = 'topic-list';
-  module.topics.forEach(topicText => {
-    const topic = document.createElement('span');
-    topic.className = 'topic';
-    topic.textContent = topicText;
-    topics.append(topic);
+const state = loadState();
+const elements = {
+  areaControl: document.getElementById('area-control'), levelControl: document.getElementById('level-control'), areaIcon: document.getElementById('area-icon'),
+  trackLabel: document.getElementById('track-label'), trackTitle: document.getElementById('track-title'), trackDescription: document.getElementById('track-description'),
+  statModules: document.getElementById('stat-modules'), statHours: document.getElementById('stat-hours'), statProgress: document.getElementById('stat-progress'), statScore: document.getElementById('stat-score'), statChallenges: document.getElementById('stat-challenges'),
+  moduleList: document.getElementById('module-list'), moduleDetail: document.getElementById('module-detail'), challengeCard: document.getElementById('challenge-card'),
+  challengeButton: document.getElementById('generate-challenge'), resetButton: document.getElementById('reset-progress'), progressRing: document.getElementById('progress-ring'), overallProgress: document.getElementById('overall-progress'), areaProgress: document.getElementById('area-progress'), achievementList: document.getElementById('achievement-list'),
+  nameInput: document.getElementById('participant-name'), rankingList: document.getElementById('ranking-list'), certificateButton: document.getElementById('generate-certificate'), certificateResult: document.getElementById('certificate-result'), toast: document.getElementById('toast')
+};
+
+function saveState() { localStorage.setItem(storageKey, JSON.stringify(state)); }
+function currentTrack() { return catalog[state.area].levels[state.level]; }
+function currentModule() { return currentTrack().modules[state.selectedModule]; }
+function moduleKey(area = state.area, level = state.level, index = state.selectedModule) { return `${area}:${level}:${index}`; }
+function hasModule(key) { return state.completedModules.includes(key); }
+function hasChallenge(key) { return state.completedChallenges.some(item => item.key === key); }
+function totalScore() { return state.completedChallenges.reduce((sum, item) => sum + item.points, 0); }
+function trackCompletion(area = state.area, level = state.level) {
+  const modules = catalog[area].levels[level].modules;
+  const done = modules.filter((_, index) => hasModule(moduleKey(area, level, index))).length;
+  return { done, total: modules.length, percent: Math.round((done / modules.length) * 100) };
+}
+function areaCompletion(area) {
+  let done = 0; let total = 0;
+  levelOrder.forEach(level => { const progress = trackCompletion(area, level); done += progress.done; total += progress.total; });
+  return Math.round((done / total) * 100);
+}
+function overallCompletion() {
+  const values = areaOrder.map(areaCompletion);
+  return Math.round(values.reduce((sum, value) => sum + value, 0) / values.length);
+}
+function showToast(message) {
+  elements.toast.textContent = message;
+  elements.toast.classList.add('is-visible');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => elements.toast.classList.remove('is-visible'), 2300);
+}
+
+function renderControls() {
+  elements.areaControl.replaceChildren();
+  areaOrder.forEach(areaKey => {
+    const area = catalog[areaKey];
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = `choice-button${state.area === areaKey ? ' is-active' : ''}`;
+    button.setAttribute('aria-pressed', String(state.area === areaKey));
+    button.innerHTML = `<span class="choice-icon">${area.icon.replace('<', '&lt;')}</span><span>${area.label}</span>`;
+    button.addEventListener('click', () => { state.area = areaKey; state.selectedModule = 0; saveState(); renderAll(); });
+    elements.areaControl.append(button);
   });
-  elements.moduleDetail.append(label, title, description, topics);
+  elements.levelControl.replaceChildren();
+  levelOrder.forEach(levelKey => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = `choice-button${state.level === levelKey ? ' is-active' : ''}`;
+    button.setAttribute('aria-pressed', String(state.level === levelKey));
+    button.textContent = levels[levelKey].label;
+    button.addEventListener('click', () => { state.level = levelKey; state.selectedModule = 0; saveState(); renderAll(); });
+    elements.levelControl.append(button);
+  });
+}
+
+function renderOverview() {
+  const area = catalog[state.area];
+  const track = currentTrack();
+  const progress = trackCompletion();
+  elements.areaIcon.textContent = area.icon;
+  elements.trackLabel.textContent = `${area.label.toUpperCase()} · ${levels[state.level].label.toUpperCase()}`;
+  elements.trackTitle.textContent = track.title;
+  elements.trackDescription.textContent = track.description;
+  elements.statModules.textContent = track.modules.length;
+  elements.statHours.textContent = `${track.modules.reduce((sum, module) => sum + module.hours, 0)}h`;
+  elements.statProgress.textContent = `${progress.percent}%`;
+  elements.statScore.textContent = totalScore();
+  elements.statChallenges.textContent = state.completedChallenges.length;
 }
 
 function renderModules() {
   elements.moduleList.replaceChildren();
-  activeTrack().modules.forEach((module, index) => {
+  currentTrack().modules.forEach((module, index) => {
+    const key = moduleKey(state.area, state.level, index);
     const button = document.createElement('button');
     button.type = 'button';
-    button.className = `module-button${index === state.selectedModule ? ' is-active' : ''}`;
+    button.className = `module-button${index === state.selectedModule ? ' is-active' : ''}${hasModule(key) ? ' is-complete' : ''}`;
     button.setAttribute('role', 'listitem');
     button.setAttribute('aria-pressed', String(index === state.selectedModule));
-    const number = document.createElement('span');
-    number.className = 'module-index';
-    number.textContent = String(index + 1).padStart(2, '0');
-    const title = document.createElement('span');
-    title.className = 'module-title';
-    title.textContent = module.title;
-    const hours = document.createElement('span');
-    hours.className = 'module-hours';
-    hours.textContent = `${module.hours}h`;
-    button.append(number, title, hours);
-    button.addEventListener('click', () => {
-      state.selectedModule = index;
-      state.completed.add(moduleKey(index));
-      renderModules();
-      renderModuleDetail();
-      updateStats();
-    });
+    const indexEl = document.createElement('span'); indexEl.className = 'module-index'; indexEl.textContent = hasModule(key) ? '✓' : String(index + 1).padStart(2, '0');
+    const titleEl = document.createElement('span'); titleEl.className = 'module-title'; titleEl.textContent = module.title;
+    const hoursEl = document.createElement('span'); hoursEl.className = 'module-hours'; hoursEl.textContent = `${module.hours}h`;
+    button.append(indexEl, titleEl, hoursEl);
+    button.addEventListener('click', () => { state.selectedModule = index; saveState(); renderModules(); renderModuleDetail(); renderChallengePlaceholder(); });
     elements.moduleList.append(button);
   });
 }
 
-function renderLevel() {
-  const track = activeTrack();
-  elements.levelButtons.forEach(button => {
-    const active = button.dataset.level === state.level;
-    button.classList.toggle('is-active', active);
-    button.setAttribute('aria-pressed', String(active));
+function renderModuleDetail() {
+  const module = currentModule();
+  const key = moduleKey();
+  elements.moduleDetail.replaceChildren();
+  const label = document.createElement('p'); label.className = 'micro-label'; label.textContent = `${module.hours} HORAS · MÓDULO ${String(state.selectedModule + 1).padStart(2, '0')}`;
+  const title = document.createElement('h3'); title.textContent = module.title;
+  const description = document.createElement('p'); description.textContent = module.description;
+  const topics = document.createElement('div'); topics.className = 'topic-list';
+  module.topics.forEach(text => { const topic = document.createElement('span'); topic.className = 'topic'; topic.textContent = text; topics.append(topic); });
+  const action = document.createElement('div'); action.className = 'module-action';
+  const status = document.createElement('span'); status.className = 'module-status'; status.textContent = hasModule(key) ? 'Módulo registrado como concluído.' : 'Conclua o conteúdo e registre seu avanço.';
+  const button = document.createElement('button'); button.type = 'button'; button.className = `small-button${hasModule(key) ? ' is-complete' : ''}`; button.textContent = hasModule(key) ? 'Concluído ✓' : 'Marcar como concluído';
+  button.addEventListener('click', () => {
+    if (hasModule(key)) state.completedModules = state.completedModules.filter(item => item !== key);
+    else state.completedModules.push(key);
+    saveState(); renderModules(); renderModuleDetail(); renderOverview(); renderDashboard(); showToast(hasModule(key) ? 'Progresso atualizado.' : 'Conclusão removida.');
   });
-  elements.levelLabel.textContent = `NÍVEL ${track.label.toUpperCase()}`;
-  elements.trackTitle.textContent = track.title;
-  elements.trackDescription.textContent = track.description;
-  state.selectedModule = 0;
-  renderModules();
-  renderModuleDetail();
-  updateStats();
-  elements.challengeCard.innerHTML = '<p class="micro-label">PRONTO PARA PRATICAR</p><h3>Seu próximo desafio aparecerá aqui.</h3><p>Use a proposta como ponto de partida e registre sua solução no GitHub.</p>';
+  action.append(status, button);
+  elements.moduleDetail.append(label, title, description, topics, action);
 }
 
-elements.levelButtons.forEach(button => button.addEventListener('click', () => {
-  state.level = button.dataset.level;
-  renderLevel();
-}));
+function renderChallengePlaceholder() {
+  elements.challengeCard.innerHTML = '<p class="micro-label">MISSÃO DISPONÍVEL</p><h3>Gere um desafio para o módulo selecionado.</h3><p>A complexidade e a pontuação acompanham o nível da trilha.</p>';
+}
 
-elements.challengeButton.addEventListener('click', () => {
-  const modules = activeTrack().modules;
-  const moduleIndex = Math.floor(Math.random() * modules.length);
-  const module = modules[moduleIndex];
-  const challenge = module.challenges[Math.floor(Math.random() * module.challenges.length)];
-  state.selectedModule = moduleIndex;
-  state.completed.add(moduleKey(moduleIndex));
-  renderModules();
-  renderModuleDetail();
-  updateStats();
+function renderChallenge() {
+  const module = currentModule();
+  const level = levels[state.level];
+  const key = moduleKey();
+  const complete = hasChallenge(key);
   elements.challengeCard.replaceChildren();
-  const label = document.createElement('p');
-  label.className = 'micro-label';
-  label.textContent = `${activeTrack().label.toUpperCase()} · ${module.title.toUpperCase()}`;
-  const title = document.createElement('h3');
-  title.textContent = challenge;
-  const tip = document.createElement('p');
-  tip.textContent = 'Critério de conclusão: solução funcional, teste do fluxo principal e documentação das decisões no README.';
-  elements.challengeCard.append(label, title, tip);
-});
+  const label = document.createElement('p'); label.className = 'micro-label'; label.textContent = `${catalog[state.area].label.toUpperCase()} · ${level.label.toUpperCase()}`;
+  const title = document.createElement('h3'); title.textContent = module.challenge;
+  const brief = document.createElement('p'); brief.textContent = module.brief;
+  const meta = document.createElement('div'); meta.className = 'challenge-meta'; meta.innerHTML = `<span>${level.points} pontos</span><span>${module.hours}h de referência</span><span>${level.deliverables.length} entregáveis</span>`;
+  const deliverables = document.createElement('div'); deliverables.className = 'challenge-section'; deliverables.innerHTML = '<strong>Entregáveis</strong>';
+  const deliverableList = document.createElement('ul'); level.deliverables.forEach(item => { const li = document.createElement('li'); li.textContent = item; deliverableList.append(li); }); deliverables.append(deliverableList);
+  const criteria = document.createElement('div'); criteria.className = 'challenge-section'; criteria.innerHTML = '<strong>Critérios de aceite</strong>';
+  const criteriaList = document.createElement('ul'); level.criteria.forEach(item => { const li = document.createElement('li'); li.textContent = item; criteriaList.append(li); }); criteria.append(criteriaList);
+  const button = document.createElement('button'); button.type = 'button'; button.className = 'small-button challenge-complete'; button.disabled = complete; button.textContent = complete ? 'Desafio concluído ✓' : `Concluir desafio · +${level.points} pontos`;
+  button.addEventListener('click', () => { state.completedChallenges.push({ key, points: level.points, completedAt: new Date().toISOString() }); if (!hasModule(key)) state.completedModules.push(key); saveState(); renderChallenge(); renderModules(); renderModuleDetail(); renderOverview(); renderDashboard(); renderRanking(); showToast(`Desafio concluído: +${level.points} pontos!`); });
+  elements.challengeCard.append(label, title, brief, meta, deliverables, criteria, button);
+}
 
-elements.certificateButton.addEventListener('click', () => {
-  const rawName = elements.nameInput.value.trim() || 'Estudante';
-  const name = escapeXml(rawName.slice(0, 60));
-  const track = activeTrack();
+function renderDashboard() {
+  const overall = overallCompletion();
+  elements.progressRing.style.setProperty('--progress', overall);
+  elements.overallProgress.textContent = `${overall}%`;
+  elements.areaProgress.replaceChildren();
+  areaOrder.forEach(areaKey => {
+    const percent = areaCompletion(areaKey);
+    const row = document.createElement('div'); row.className = 'progress-row';
+    row.innerHTML = `<span>${catalog[areaKey].label}</span><div class="progress-track"><div class="progress-fill" style="width:${percent}%"></div></div><strong>${percent}%</strong>`;
+    elements.areaProgress.append(row);
+  });
+  const completedAreas = areaOrder.filter(area => areaCompletion(area) > 0).length;
+  const achievements = [
+    { label: 'Primeiro passo', earned: state.completedModules.length >= 1 },
+    { label: 'Explorador 25%', earned: overall >= 25 },
+    { label: 'Desafiante 500', earned: totalScore() >= 500 },
+    { label: 'Multitrilha', earned: completedAreas >= 2 },
+    { label: 'Jornada completa', earned: overall === 100 }
+  ];
+  elements.achievementList.replaceChildren();
+  achievements.forEach(item => { const badge = document.createElement('span'); badge.className = `achievement${item.earned ? ' is-earned' : ''}`; badge.textContent = `${item.earned ? '✓ ' : '○ '}${item.label}`; elements.achievementList.append(badge); });
+}
+
+function renderRanking() {
+  const demos = [
+    { name: 'Marina · demo', score: 1650 },
+    { name: 'Carlos · demo', score: 1280 },
+    { name: 'Joana · demo', score: 920 },
+    { name: 'Rafael · demo', score: 620 }
+  ];
+  const name = state.name.trim() || 'Estudante';
+  const entries = [...demos, { name: `${name} · você`, score: totalScore(), user: true }].sort((a, b) => b.score - a.score);
+  elements.rankingList.replaceChildren();
+  entries.forEach(entry => {
+    const item = document.createElement('li'); item.className = `ranking-item${entry.user ? ' is-user' : ''}`;
+    const nameEl = document.createElement('span'); nameEl.className = 'ranking-name'; nameEl.textContent = entry.name;
+    const scoreEl = document.createElement('span'); scoreEl.className = 'ranking-score'; scoreEl.textContent = `${entry.score} pts`;
+    item.append(nameEl, scoreEl); elements.rankingList.append(item);
+  });
+}
+
+function latin1Bytes(text) { const bytes = new Uint8Array(text.length); for (let i = 0; i < text.length; i += 1) bytes[i] = text.charCodeAt(i) & 255; return bytes; }
+function pdfText(text) { return String(text).replace(/[–—]/g, '-').replace(/[“”]/g, '"').replace(/[‘’]/g, "'").replace(/\\/g, '\\\\').replace(/\(/g, '\\(').replace(/\)/g, '\\)'); }
+function buildCertificatePdf(name) {
+  const area = catalog[state.area]; const track = currentTrack(); const progress = trackCompletion(); const score = totalScore();
   const hours = track.modules.reduce((sum, module) => sum + module.hours, 0);
   const date = new Intl.DateTimeFormat('pt-BR').format(new Date());
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800"><defs><linearGradient id="b" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#07111f"/><stop offset="1" stop-color="#122b44"/></linearGradient></defs><rect width="1200" height="800" fill="url(#b)"/><rect x="65" y="65" width="1070" height="670" rx="28" fill="none" stroke="#4de3a2" stroke-width="4"/><text x="600" y="150" text-anchor="middle" font-family="Arial" font-size="26" font-weight="700" fill="#4de3a2" letter-spacing="5">GEO-EXPLORER</text><text x="600" y="230" text-anchor="middle" font-family="Arial" font-size="48" font-weight="700" fill="#eef5ff">CERTIFICADO DEMONSTRATIVO</text><text x="600" y="305" text-anchor="middle" font-family="Arial" font-size="23" fill="#9fb1c8">Certificamos, para fins de simulação educacional, que</text><text x="600" y="390" text-anchor="middle" font-family="Arial" font-size="44" font-weight="700" fill="#6da8ff">${name.toUpperCase()}</text><text x="600" y="458" text-anchor="middle" font-family="Arial" font-size="24" fill="#eef5ff">concluiu a trilha ${escapeXml(track.title)}</text><text x="600" y="520" text-anchor="middle" font-family="Arial" font-size="21" fill="#9fb1c8">Nível ${track.label} · ${hours} horas · ${date}</text><rect x="410" y="590" width="380" height="58" rx="29" fill="#4de3a2"/><text x="600" y="627" text-anchor="middle" font-family="Arial" font-size="20" font-weight="700" fill="#052117">DOCUMENTO FICTÍCIO · DEMONSTRAÇÃO</text></svg>`;
-  const url = URL.createObjectURL(new Blob([svg], { type: 'image/svg+xml' }));
+  const content = [
+    'q', '0.027 0.067 0.122 rg', '0 0 842 595 re f', '0.302 0.890 0.635 RG', '3 w', '42 42 758 511 re S',
+    'BT /F2 14 Tf 0.302 0.890 0.635 rg 1 0 0 1 326 520 Tm (GEO-EXPLORER V2) Tj ET',
+    'BT /F2 28 Tf 0.933 0.961 1 rg 1 0 0 1 180 455 Tm (CERTIFICADO DEMONSTRATIVO) Tj ET',
+    'BT /F1 14 Tf 0.624 0.694 0.784 rg 1 0 0 1 237 415 Tm (Documento educacional, ficticio e sem validade oficial.) Tj ET',
+    `BT /F1 16 Tf 0.933 0.961 1 rg 1 0 0 1 338 355 Tm (Certificamos que) Tj ET`,
+    `BT /F2 27 Tf 0.427 0.659 1 rg 1 0 0 1 120 305 Tm (${pdfText(name.toUpperCase())}) Tj ET`,
+    `BT /F1 16 Tf 0.933 0.961 1 rg 1 0 0 1 150 255 Tm (explorou a trilha ${pdfText(track.title)}.) Tj ET`,
+    `BT /F2 15 Tf 0.302 0.890 0.635 rg 1 0 0 1 160 205 Tm (${pdfText(area.label)} | ${pdfText(levels[state.level].label)} | ${hours} horas | Progresso ${progress.percent}% | ${score} pontos) Tj ET`,
+    `BT /F1 12 Tf 0.624 0.694 0.784 rg 1 0 0 1 270 145 Tm (Gerado em ${date} por Geo-Explorer.) Tj ET`,
+    '0.302 0.890 0.635 rg', '296 78 250 34 re f', 'BT /F2 11 Tf 0.020 0.129 0.090 rg 1 0 0 1 334 91 Tm (DEMONSTRACAO FICTICIA) Tj ET', 'Q'
+  ].join('\n');
+  const objects = [null,
+    '<< /Type /Catalog /Pages 2 0 R >>',
+    '<< /Type /Pages /Kids [3 0 R] /Count 1 >>',
+    '<< /Type /Page /Parent 2 0 R /MediaBox [0 0 842 595] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 6 0 R >>',
+    '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>',
+    '<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>',
+    `<< /Length ${content.length} >>\nstream\n${content}\nendstream`
+  ];
+  let pdf = '%PDF-1.4\n'; const offsets = [0];
+  for (let i = 1; i < objects.length; i += 1) { offsets[i] = pdf.length; pdf += `${i} 0 obj\n${objects[i]}\nendobj\n`; }
+  const xref = pdf.length; pdf += `xref\n0 ${objects.length}\n0000000000 65535 f \n`;
+  for (let i = 1; i < objects.length; i += 1) pdf += `${String(offsets[i]).padStart(10, '0')} 00000 n \n`;
+  pdf += `trailer\n<< /Size ${objects.length} /Root 1 0 R >>\nstartxref\n${xref}\n%%EOF`;
+  return new Blob([latin1Bytes(pdf)], { type: 'application/pdf' });
+}
+
+function renderCertificateResult() {
+  const track = currentTrack(); const progress = trackCompletion();
   elements.certificateResult.classList.add('is-ready');
   elements.certificateResult.replaceChildren();
-  const label = document.createElement('p');
-  label.className = 'micro-label';
-  label.textContent = 'CERTIFICADO GERADO';
-  const text = document.createElement('p');
-  text.innerHTML = `<strong>${name}</strong><br>${track.title} · ${track.label} · ${hours}h`;
-  const disclaimer = document.createElement('p');
-  disclaimer.className = 'disclaimer';
-  disclaimer.textContent = 'Documento fictício criado exclusivamente para demonstrar a funcionalidade.';
-  const link = document.createElement('a');
-  link.className = 'download-link';
-  link.href = url;
-  link.download = `certificado-geo-explorer-${state.level}.svg`;
-  link.textContent = 'Baixar demonstração';
-  elements.certificateResult.append(label, text, disclaimer, link);
+  const icon = document.createElement('span'); icon.textContent = 'PDF';
+  const content = document.createElement('div');
+  const text = document.createElement('p'); text.innerHTML = `<strong>${state.name || 'Estudante'}</strong><br>${catalog[state.area].label} · ${track.title}<br>Progresso ${progress.percent}% · ${totalScore()} pontos`;
+  const link = document.createElement('a'); link.className = 'download-link'; link.href = downloadUrl; link.download = `certificado-demonstrativo-geo-explorer-${state.area}-${state.level}.pdf`; link.textContent = 'Baixar PDF fictício';
+  content.append(text, link); elements.certificateResult.append(icon, content);
+}
+
+elements.challengeButton.addEventListener('click', renderChallenge);
+elements.nameInput.value = state.name;
+elements.nameInput.addEventListener('input', event => { state.name = event.target.value.slice(0, 45); saveState(); renderRanking(); });
+elements.certificateButton.addEventListener('click', () => {
+  const name = state.name.trim() || 'Estudante';
+  if (downloadUrl) URL.revokeObjectURL(downloadUrl);
+  downloadUrl = URL.createObjectURL(buildCertificatePdf(name));
+  renderCertificateResult(); showToast('Certificado demonstrativo em PDF gerado.');
+});
+elements.resetButton.addEventListener('click', () => {
+  if (!window.confirm('Deseja apagar o progresso e a pontuação salvos neste navegador?')) return;
+  state.completedModules = []; state.completedChallenges = []; saveState(); renderAll(); showToast('Progresso reiniciado.');
 });
 
-renderLevel();
+function renderAll() {
+  renderControls(); renderOverview(); renderModules(); renderModuleDetail(); renderChallengePlaceholder(); renderDashboard(); renderRanking();
+}
+
+renderAll();
