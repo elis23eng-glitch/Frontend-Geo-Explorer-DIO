@@ -1,182 +1,151 @@
 # 🌍 Geo-Explorer — DIO + IBM Bob
 
-Projeto Geo-Explorer desenvolvido para o desafio “Construindo seu Primeiro Produto com um Agente de IA” da DIO. Este repositório contém a implementação Front-End do sistema de exploração [...]
+Aplicação desenvolvida para o desafio **“Construindo seu Primeiro Produto com um Agente de IA”**, do bootcamp **IBM Bob: IA de Nível Empresarial para Desenvolvedores e Tech Leaders**, promovido pela DIO.
 
-## 📘 O que é o Geo-Explorer
+O Geo-Explorer transforma uma base estruturada de aprendizagem Front-End em uma experiência interativa: o usuário escolhe seu nível, consulta módulos, recebe desafios práticos e gera uma demonstração fictícia de certificado.
 
-O Geo-Explorer é uma aplicação em Node.js criada para o desafio **“Construindo seu Primeiro Produto com um Agente de IA”** da DIO Global. Ele permite explorar trilhas de aprendizagem, gerar [...]
+## 🚀 Aplicação publicada
 
-O projeto foi desenvolvido com foco em **Front-End**, simulando trilhas de estudo para níveis Iniciante, Intermediário e Avançado.
+**Acesse a demonstração:**  
+https://geo-explorer-ibm-bob.elis23-eng.chatgpt.site
 
-## 📚 Base de Trilhas (resumo)
+> O antigo endereço `localhost` funcionava apenas durante a execução local. A URL acima é pública e permanente.
 
-O arquivo `data/trilhas.json` contém trilhas fictícias para **Front-End**, divididas em três níveis:
+## ✨ Funcionalidades
 
-### 🔹 Iniciante
-- HTML
-- CSS
-- JavaScript
-- Git
-- GitHub
+- Seleção entre os níveis Iniciante, Intermediário e Avançado
+- Consulta de módulos, tópicos e carga horária
+- Geração aleatória de desafios adequados ao nível
+- Indicador de progresso durante a exploração
+- Geração e download de certificado demonstrativo em SVG
+- Interface responsiva para computador e celular
+- Versão de linha de comando em Node.js
+- Servidor MCP para integração com agentes de IA
+- Testes automatizados dos comandos principais
 
-*Fundamentos essenciais para iniciar no Front-End.*
+## 🧠 Competências aplicadas
 
-### 🔹 Intermediário
-- React. fundamentos
-- Hooks.
-- APIs
-- CCS avançado
+- IBM Bob e desenvolvimento assistido por agentes de IA
+- Node.js e JavaScript
+- HTML5 e CSS3 responsivo
+- JSON e modelagem de dados
+- Git e GitHub
+- Model Context Protocol (MCP)
+- Testes, documentação e organização modular
+- Princípios de DevOps e publicação contínua
 
-*Construção de aplicações modernas com React, incluindo hooks e integração com APIs.*
+## 🏗️ Arquitetura do projeto
 
-### 🔹 Avançado
-- React.avançado
-- Arquitetura
-- Testes
-- Deploy
+```text
+Frontend-Geo-Explorer-DIO/
+├── commands/          # Regras dos comandos de terminal
+├── data/              # Base JSON das trilhas
+├── public/            # Aplicação web
+│   ├── index.html
+│   ├── styles.css
+│   └── app.js
+├── tests/             # Testes automatizados
+├── index.js           # Interface de linha de comando
+├── server.js          # Servidor local da aplicação web
+├── mcp-server.js      # Servidor MCP
+└── package.json
+```
 
-*Aprofundamento em técnicas avançadas de Front-End.*
+## 💻 Executar a aplicação web localmente
 
----
-
-## 🚀 Como executar o projeto
-
-Instale as dependências:
+Pré-requisito: Node.js instalado.
 
 ```bash
 npm install
+npm start
 ```
 
-Para rodar o projeto:
+Depois, acesse:
 
-```bash
-node index.js
+```text
+http://localhost:3000
 ```
 
-Os comandos específicos são explicados na seção abaixo.
+O endereço local funciona somente enquanto o comando `npm start` estiver ativo no terminal.
 
+## ⌨️ Executar pela linha de comando
 
----
-
-## 🛠 Comandos principais
-
-O Geo-Explorer possui três comandos principais. Use-os no terminal após `node index.js`:
-
-### 🔹 1. Trilha
-Retorna os módulos da trilha escolhida.
+Consultar uma trilha:
 
 ```bash
 node index.js trilha frontend iniciante
 ```
 
-### 🔹 2. Desafio
-Gera um desafio baseado no nível informado.
+Gerar um desafio:
 
 ```bash
 node index.js desafio frontend intermediario
 ```
 
-### 🔹 3. Certificado
-Gera um certificado fictício com nome e trilha.
+Gerar os dados de um certificado fictício:
 
 ```bash
 node index.js certificado "Seu Nome" frontend avancado
 ```
 
----
-
-## 🧪 Como executar os testes
-
-Os testes foram criados usando Node.js puro, sem bibliotecas externas. Execute cada teste individualmente:
+## 🤖 Executar o servidor MCP
 
 ```bash
-node test/trilha.test.js
-node test/desafio.test.js
-node test/certificado.test.js
+npm run mcp
 ```
 
-Cada teste imprime no console o resultado esperado do comando correspondente.
+O servidor MCP expõe recursos do projeto para integração controlada com agentes e ferramentas compatíveis.
 
-*Para testar acesse URL: http://localhost:3007
+## 🧪 Executar os testes
 
----
+```bash
+npm test
+```
 
-## ✨ Melhorias realizadas no projeto
+Também é possível executar cada teste separadamente:
 
-Durante o desenvolvimento, foram implementadas melhorias além do fluxo básico apresentado no desafio:
+```bash
+npm run test:trilha
+npm run test:desafio
+npm run test:certificado
+```
 
-- Organização clara da estrutura do projeto
-- Criação de um servidor MCP para integração externa
-- Testes automatizados para cada comando
-- Documentação mais completa
-- Resumo visual das trilhas para melhorar a leitura
-- Separação de responsabilidades em arquivos distintos
-- README otimizado para pré-visualização no GitHub
+## 📚 Trilhas disponíveis
 
-Essas melhorias tornam o projeto mais profissional, escalável e fácil de entender.
+### Iniciante — Fundamentos do Front-End
 
----
+HTML5, CSS3, Git e GitHub.
 
-## 🔍 O que aprendi durante o desafio
+### Intermediário — JavaScript e Interatividade
 
-### ⭐ 1. A importância da organização
-Estruturar o projeto em pastas claras facilita a evolução e a manutenção.
+JavaScript, APIs, hooks, componentização, CSS avançado e animações.
 
-### ⭐ 2. Criar comandos simples e reutilizáveis
-Dividir funcionalidades em módulos independentes deixa o código mais limpo.
+### Avançado — React e Ecossistema Moderno
 
-### ⭐ 3. Testar é essencial
-Mesmo testes simples ajudam a validar o funcionamento e evitar erros futuros.
+Componentes, estado, hooks, integração com APIs, rotas e deploy.
 
-### ⭐ 4. Documentar é comunicar
-Um README bem escrito transforma um projeto comum em um projeto profissional.
+## 🔐 Transparência dos dados
 
-### ⭐ 5. IA como parceira
-A IA acelera o processo, mas exige instruções claras e revisão humana.
+As trilhas, os desafios, os nomes e os certificados utilizados na demonstração são **fictícios e exclusivamente educacionais**. O certificado gerado pela aplicação não representa uma certificação oficial da DIO ou da IBM.
 
-### ⭐ 6. Projetos práticos aceleram a transição de carreira
-Construir algo real aumenta a confiança e fortalece o portfólio.
+## 🔍 Aprendizados do desafio
 
-### ⭐ 7. Evoluir continuamente
-Cada pequena melhoria torna o projeto mais robusto e mais próximo de aplicações reais.
-
-## ✨ Possíveis evoluções
-
-- Adicionar novas trilhas (Back-End, IA, Mobile)
-- Criar desafios mais complexos
-- Gerar certificados em PDF
-- Adicionar interface web
-- Criar ranking de desafios
-- Adicionar sistema de progresso
-- Criar dashboard visual
-
----
-
-## 🔍 Insights para futuros profissionais — Geo Explorer DIO
-
-O desenvolvimento do Geo-Explorer foi mais do que um exercício técnico: foi uma experiência prática sobre como construir tecnologia de forma incremental, organizada e orientada a propósito.
-
-### ⭐ Dicas rápidas
-- Comece simples, mas comece
-- Organização é tão importante quanto código
-- Testar é parte do desenvolvimento
-- Documentar é comunicar
-- IA como parceira, não substituta
-- Projetos práticos aceleram a transição de carreira
-- Evoluir é um processo contínuo
-
----
-
-### 💬 Mensagem final
-
-Este projeto representa o início de uma nova jornada profissional. Cada comando criado, cada teste executado e cada linha documentada reforça que **qualquer pessoa pode construir soluções reais quando tem direção, disciplina e coragem para começar**.
-
----
+- Transformar requisitos em funcionalidades testáveis
+- Organizar responsabilidades em módulos reutilizáveis
+- Usar IA como aceleradora, mantendo validação humana
+- Integrar dados, interface, testes e documentação
+- Preparar uma aplicação para demonstração pública
+- Comunicar decisões técnicas de maneira clara
 
 ## 👩‍💻 Autora
 
-**Elisangela Vieira**
+**Elisângela Alves Vieira**  
+Engenharia · Processos · Projetos · Dados e IA aplicada
 
-Foco: Front-End → Full Stack → Engenharia de IA
+- [LinkedIn](https://www.linkedin.com/in/elisangelavieira-engcivil/)
+- [GitHub](https://github.com/elis23eng-glitch)
+- [Portfólio profissional](https://elisangela-vieira-engenharia.elis23-eng.chatgpt.site/)
 
-> "O aprendizado é a única coisa que a mente nunca esgota, nunca teme e nunca se arrepende." — Leonardo da Vinci
+---
+
+Desenvolvido como projeto educacional para consolidar conhecimentos em agentes de IA, desenvolvimento, Git, MCP e DevOps.
