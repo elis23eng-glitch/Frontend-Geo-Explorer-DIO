@@ -153,3 +153,6 @@ Engenharia · Processos · Projetos · Dados e IA aplicada
 ---
 
 Desenvolvido como projeto educacional para consolidar conhecimentos em agentes de IA, desenvolvimento, Git, MCP, DevOps e evolução de produtos digitais.
+
+
+- Interface premium com navegação lateral, painel modular e hero panorâmico
