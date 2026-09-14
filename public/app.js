@@ -349,3 +349,29 @@ function renderAll() {
 }
 
 renderAll();
+
+const sidebar = document.getElementById('sidebar');
+const menuToggle = document.getElementById('menu-toggle');
+const sidebarClose = document.getElementById('sidebar-close');
+const sidebarBackdrop = document.getElementById('sidebar-backdrop');
+const sideLinks = [...document.querySelectorAll('.side-nav a')];
+
+function setSidebar(open) {
+  sidebar.classList.toggle('is-open', open);
+  sidebarBackdrop.classList.toggle('is-visible', open);
+  menuToggle.setAttribute('aria-expanded', String(open));
+  document.body.classList.toggle('menu-open', open);
+}
+
+menuToggle.addEventListener('click', () => setSidebar(!sidebar.classList.contains('is-open')));
+sidebarClose.addEventListener('click', () => setSidebar(false));
+sidebarBackdrop.addEventListener('click', () => setSidebar(false));
+
+sideLinks.forEach(link => link.addEventListener('click', () => {
+  sideLinks.forEach(item => item.classList.toggle('is-active', item === link));
+  setSidebar(false);
+}));
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') setSidebar(false);
+});
